@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<kotlin.version>1.4.10</kotlin.version>
+		<swagger.version>3.0.0</swagger.version>
 	</properties>
 
 
@@ -50,9 +51,14 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
-			<artifactId>kotlin-test</artifactId>
+			<artifactId>kotlin-test-junit</artifactId>
 			<version>${kotlin.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -4,18 +4,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.DBRef
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document("exams")
-data class Exam(
+@Document("users")
+data class User(
     @Id @JsonSerialize(using = ToStringSerializer::class)
     var id: ObjectId,
-    var value: String,
-    var score: Int,
-    var userIssuer: ObjectId, //ObjectID O USERNAME?
-    var userRecipient: ObjectId,
-    @DBRef
-    var participants: List<User>, //lista de usuarios?
-    var questions: List<Question>,
-)
+    var username: String,
+    var password: String,
+    var type: String,
+    var dateCreated: Long,
+) {
+}
