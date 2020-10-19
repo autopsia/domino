@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class DominoApplication
 
 fun main(args: Array<String>) {
+	//TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
 	runApplication<DominoApplication>(*args)
 }
