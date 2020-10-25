@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer
 import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
 
 @Document("questions")
 data class Question(
     @Id @JsonSerialize(using = ToStringSerializer::class)
     var id: ObjectId,
-    var dateCreated: Long,
+    var dateCreated: LocalDateTime,
     var category: String, //categoria cursos
     var tags: String,
     var difficulty: Int, //dificultad depoendiendo del grado
@@ -21,7 +22,7 @@ data class Question(
     var type: Int, //tipo de pregunta, multiopcion, si o no, detallada, completa las palabras
 
     // podria ser un objecto   nuevo, dependiendo del tipo de pregunta
-    var answer: String, //respuesta correcta
+    var answers: List<Answer>, //respuesta correcta
     var options: List<Option>, // opciones para responder
 ) {
 
