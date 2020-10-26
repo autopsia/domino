@@ -2,8 +2,8 @@ package com.sectordefectuoso.domino.service
 
 import com.sectordefectuoso.domino.model.Question
 import com.sectordefectuoso.domino.repository.QuestionRepository
-import com.sectordefectuoso.domino.utils.timeStampNow
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class QuestionService(
@@ -14,7 +14,7 @@ class QuestionService(
     }
 
     fun insert(question: Question): Question? {
-        question.dateCreated = timeStampNow()
+        question.dateCreated = LocalDateTime.now()
         return questionRepository.insert(question)
     }
 }
