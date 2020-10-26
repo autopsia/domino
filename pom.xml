@@ -60,10 +60,6 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
-		<dependency>
-			<groupId></groupId>
-			<artifactId>springsecurity</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
