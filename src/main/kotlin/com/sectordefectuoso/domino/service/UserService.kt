@@ -34,7 +34,6 @@ class UserService(
                 dateCreated = timestampNow(),
                 dateUpdated = timestampNow(),
         )
-
         return userRepository.insert(user)
     }
 
