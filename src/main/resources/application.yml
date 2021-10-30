@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      uri: mongodb://servania:27017/domino
+      database: domino
+  output:
+    ansi:
+      enableD: ALWAYS
+  #jackson
+  jackson:
+    serialization:
+      indent-output: true
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+    deserialization:
+      fail-on-unknown-properties: false
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    display-request-duration: true
+    doc-expansion: none
+#    oauth:
+#      clientId: xxxxxxxxxx

@@ -8,5 +8,6 @@ class DominoApplication
 
 fun main(args: Array<String>) {
 	//TimeZone.setDefault(TimeZone.getTimeZone("UTC"))
+	System.setProperty("spring.main.lazy-initialization", "true")
 	runApplication<DominoApplication>(*args)
 }
