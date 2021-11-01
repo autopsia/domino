@@ -5,9 +5,11 @@ import com.sectordefectuoso.domino.user.repository.custom.CustomUserRepository
 import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 @Repository
 interface UserRepository : ReactiveMongoRepository<User, ObjectId>, CustomUserRepository {
     fun findUserByUsername(username: String): Mono<User?>
+    fun findAllById(ids: Set<String>): Flux<User>
 }

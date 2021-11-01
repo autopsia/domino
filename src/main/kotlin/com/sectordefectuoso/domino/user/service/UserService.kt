@@ -13,35 +13,37 @@ import reactor.core.publisher.Mono
 
 @Service
 class UserService(
-    private val userRepository: UserRepository,
+	private val userRepository: UserRepository,
 ) {
 
-    fun findAll(): Flux<User> = userRepository.findAll()
+	fun findAll(): Flux<User> = userRepository.findAll()
 
-    fun getById(id: ObjectId): Mono<User> = userRepository.findById(id)
+  fun findAllByIdList(ids: Set<String>): Flux<User> = userRepository.findAllById(ids)
 
-    fun getByUsername(username: String): Mono<User?> = userRepository.findUserByUsername(username)
+	fun getById(id: ObjectId): Mono<User> = userRepository.findById(id)
 
-    fun create(userReq: UserReq): Mono<User> {
-        //filtra los los roles que vienen de frontend a los maximos predefinidos
-        userReq.roles = userReq.roles.filter { it in createAccountRoles }.toSet()
-        if (userReq.roles.isEmpty()) userReq.roles = setOf(RoleEnum.STUDENT.name)
+	fun getByUsername(username: String): Mono<User?> = userRepository.findUserByUsername(username)
 
-        val user = User(
-                email =     userReq.email!!,
-                username =  userReq.username!!,
-                password =  userReq.password!!,
-                firstName = userReq.firstName,
-                lastName =  userReq.lastName,
-                roles =     userReq.roles,
-                ins = timestampNow(),
-        )
+	fun create(userReq: UserReq): Mono<User> {
+		//filtra los los roles que vienen de frontend a los maximos predefinidos
+		userReq.roles = userReq.roles.filter { it in createAccountRoles }.toSet()
+		if (userReq.roles.isEmpty()) userReq.roles = setOf(RoleEnum.STUDENT.name)
 
-        return userRepository.insert(user)
-    }
+		val user = User(
+			email = userReq.email!!,
+			username = userReq.username!!,
+			password = userReq.password!!,
+			firstName = userReq.firstName,
+			lastName = userReq.lastName,
+			roles = userReq.roles,
+			ins = timestampNow(),
+		)
 
-    fun update(userReq: UserReq, username: String): Mono<User?> {
-        //aqui se validan las cosas
-        return userRepository.partialUpdate(userReq)
-    }
+		return userRepository.insert(user)
+	}
+
+	fun update(userReq: UserReq, username: String): Mono<User?> {
+		//aqui se validan las cosas
+		return userRepository.partialUpdate(userReq)
+	}
 }
