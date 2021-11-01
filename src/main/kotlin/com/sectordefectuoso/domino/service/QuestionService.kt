@@ -27,4 +27,8 @@ class QuestionService(
     fun findById(id: String): Mono<Question>{
         return questionRepository.findById(id)
     }
+
+    fun getRandomQuestion(category: String, size: Long): Flux<Question> {
+        return questionRepository.findRandom(category, size)
+    }
 }
