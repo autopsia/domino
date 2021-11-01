@@ -28,7 +28,7 @@ class QuestionService(
         return questionRepository.findById(id)
     }
 
-    fun getRandomQuestion(category: String, size: Long): Flux<Question> {
+    fun getRandomQuestions(category: String, size: Long): Flux<Question> {
         return questionRepository.findRandom(category, size)
     }
 }
