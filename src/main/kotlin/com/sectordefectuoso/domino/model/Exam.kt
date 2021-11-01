@@ -11,11 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document("exams")
 data class Exam(
     @Id @JsonSerialize(using = ToStringSerializer::class)
-    var id: ObjectId,
-    var value: String,
-    var score: Int,
+    var id: ObjectId? = null,
     var userIssuer: ObjectId, //ObjectID O USERNAME?
-    var userRecipient: ObjectId,
     @DBRef
     var participants: Set<User>, //lista de usuarios?
     var questions: List<Question>,
