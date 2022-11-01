@@ -25,7 +25,7 @@ class QuestionService(
         return questionRepository.deleteById(ObjectId(id))
     }
 
-    fun findById(id: String): Mono<Question>{
+    fun findById(id: String): Mono<Question> {
         return questionRepository.findById(id)
     }
 

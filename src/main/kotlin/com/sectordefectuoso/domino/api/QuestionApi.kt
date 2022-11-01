@@ -24,4 +24,9 @@ class QuestionApi (
     ): Mono<Question> {
         return questionService.insert(question)
     }
+
+    @DeleteMapping("/{id}")
+    fun deleteQuestion(@PathVariable(value = "id") id: String) {
+        questionService.delete(id)
+    }
 }
