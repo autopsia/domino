@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 @Document("questions")
 data class Question(
     @Id @JsonSerialize(using = ToStringSerializer::class)
-    var id: ObjectId,
+    var id: ObjectId?,
     var cats: Set<String>, //categoria cursos
     var tags: Set<String>, // etiquetas
     var diff: Int, //dificultad depoendiendo del grado
