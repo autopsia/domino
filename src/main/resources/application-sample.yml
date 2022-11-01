@@ -3,7 +3,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://servania:27017/domino
+      uri: mongodb://PATH-TO-MONGO-DB
       database: domino
   output:
     ansi:
