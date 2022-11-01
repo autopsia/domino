@@ -1,12 +1,13 @@
 package com.sectordefectuoso.domino.service
 
 import com.sectordefectuoso.domino.model.Question
+import com.sectordefectuoso.domino.model.dto.QuestionInsReq
+import com.sectordefectuoso.domino.model.dto.toQuestion
 import com.sectordefectuoso.domino.repository.QuestionRepository
 import org.bson.types.ObjectId
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.time.LocalDateTime
 
 @Service
 class QuestionService(
@@ -16,8 +17,8 @@ class QuestionService(
         return questionRepository.findAll()
     }
 
-    fun insert(question: Question): Mono<Question> {
-        return questionRepository.insert(question)
+    fun insert(questionDto: QuestionInsReq): Mono<Question> {
+        return questionRepository.insert(questionDto.toQuestion())
     }
 
     fun delete(id: String): Mono<Void> {

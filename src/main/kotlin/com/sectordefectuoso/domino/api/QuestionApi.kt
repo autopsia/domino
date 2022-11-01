@@ -1,7 +1,7 @@
 package com.sectordefectuoso.domino.api
 
 import com.sectordefectuoso.domino.model.Question
-import com.sectordefectuoso.domino.model.enum.QuestionTypeEnum
+import com.sectordefectuoso.domino.model.dto.QuestionInsReq
 import com.sectordefectuoso.domino.service.QuestionService
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
@@ -20,17 +20,8 @@ class QuestionApi (
 
     @PostMapping()
     fun insertQuestion(
-        @RequestBody question: Question
+        @RequestBody question: QuestionInsReq
     ): Mono<Question> {
-        val a = 123
-        a.toString().length
-
-        val i: Int? = "9646324351".toIntOrNull(0)
-        val t: Int = "21".toIntOrNull() ?: 0
-
-        Math.abs(1)
-
-
         return questionService.insert(question)
     }
 }
